@@ -1,0 +1,1 @@
+protoc -I=C:\Users\taylo\Documents\Programming\C#\Game\LeyStoneEngine\LeyStoneEngine\Serialization --csharp_out=C:\Users\taylo\Documents\Programming\C#\Game\LeyStoneEngine\LeyStoneEngine\Serialization C:\Users\taylo\Documents\Programming\C#\Game\LeyStoneEngine\LeyStoneEngine\Serialization\World.proto

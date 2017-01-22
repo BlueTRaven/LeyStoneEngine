@@ -1,0 +1,78 @@
+syntax = "proto3";
+package LeyStoneEngine;
+
+message SerVector {
+	float x = 1;
+	float y = 2;
+}
+
+message SerEntity {
+	int32 type = 1;
+	int32 subType = 2;
+	SerVector position = 3;
+
+	repeated int32 additionalInformation = 4;	//Additional preset information; for instance, for VisualPolygonParticle, as we do not save a polygon.
+}
+
+message SerLine {
+	SerVector leftNode = 1;
+	SerVector rightNode = 2;
+}
+
+message SerPrimTriangle {
+	SerVector point1 = 1;
+	SerVector point2 = 2;
+	SerVector point3 = 3;
+
+	SerColor color1 = 4;
+	SerColor color2 = 5;
+	SerColor color3 = 6;
+
+	SerVector textureCoord1 = 7;
+	SerVector textureCoord2 = 8;
+	SerVector textureCoord3 = 9;
+
+	SerTexture texture = 10;
+}
+
+message SerPrimPolygon {
+	repeated SerPrimTriangle triangles = 1;
+}
+
+message SerPolygon {
+	repeated SerVector vertices = 2;
+	repeated SerColor colors = 3;
+	SerTexture texturename = 4;
+}
+
+message SerTexture {
+	string name = 1;
+	SerVector scale = 2;
+}
+
+message SerColor {
+	int32 r = 1;
+	int32 g = 2;
+	int32 b = 3;
+	int32 a = 4;
+}
+
+message SerTrigger {
+	int32 type = 1;
+	int32 triggeredByType = 2;
+	SerVector position = 3;
+	SerVector size = 4;
+	
+	int32 triggerActionIndex = 5;
+}
+
+message SerWorld {
+	int32 index = 1;	
+
+	SerVector size = 2;
+
+	repeated SerLine lines = 3;
+	repeated SerEntity entities = 4;
+	repeated SerPrimPolygon polygons = 5;
+	repeated SerTrigger triggers = 6;
+}
